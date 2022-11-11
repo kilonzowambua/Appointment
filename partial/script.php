@@ -43,3 +43,81 @@
 <script src="../public/vendors/chart_am/chart-custom.js"></script>
 
 <script src="../public/js/custom.js"></script>
+<link rel="stylesheet" href="../public/vendors/toastr/toastr.min.js" />
+<!-- Init  Alerts -->
+<?php if (isset($success)) { ?>
+    <!-- Pop Success Alert -->
+    <script>
+        toastr.success("<?php echo $success; ?>", "", {
+            positionClass: "toast-bottom-right",
+            timeOut: 5e3,
+            newestOnTop: !0,
+            progressBar: !0,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+        })
+    </script>
+
+<?php }
+if (isset($err)) { ?>
+    <script>
+        toastr.error("<?php echo $err; ?>", "", {
+            positionClass: "toast-bottom-right",
+            timeOut: 5e3,
+            newestOnTop: !0,
+            progressBar: !0,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+        })
+    </script>
+<?php }
+if (isset($info)) { ?>
+    <script>
+        toastr.warning("<?php echo $info; ?>", "", {
+            positionClass: "toast-bottom-right",
+            timeOut: 5e3,
+            newestOnTop: !0,
+            progressBar: !0,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+        })
+    </script>
+<?php }
+?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#sel_std").change(function() {
+            var StdID = $(this).val();
+            if (StdID) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../functions/student.php',
+                    data: 'std_id=' + StdID,
+                    success: function(html) {
+                        $('#school').html(html);
+                    }
+                });
+            } else {
+
+            }
+        });
+    });
+</script>

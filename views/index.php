@@ -1,3 +1,5 @@
+<?php require_once ('../config/config.php') ?>
+<?php require_once ('../functions/auth.php') ?>
 <!DOCTYPE html>
 <html>
 <?php include('../partial/head.php')?>
@@ -12,14 +14,14 @@
                             <h5 class="modal-title text_white">Log in</h5>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form method="POST">
                                 <div class="">
-                                    <input type="text" class="form-control" placeholder="Enter your email">
+                                    <input type="text" class="form-control" name="login_email" placeholder="Enter your email">
                                 </div>
                                 <div class="">
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input type="password" class="form-control"name="login_password" placeholder="Password">
                                 </div>
-                                <a href="#" class="btn_1 full_width text-center">Log in</a>
+                                <button name="Login" type="submit" class="btn_1 full_width text-center">Log in</button>
                                 <p>Need an account? <a data-bs-toggle="modal" data-bs-target="#sing_up" data-bs-dismiss="modal" href="#"> Sign Up</a></p>
                                 <div class="text-center">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#forgot_password" data-bs-dismiss="modal" class="pass_forget_btn">Forget Password?</a>
