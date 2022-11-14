@@ -1,12 +1,9 @@
 <?php
 session_start();
 include('../config/config.php');
-include('../functions/auth.php');
- ?>
-
-<!DOCTYPE html>
-<html>
-<?php include('../partial/head.php')?>
+include '../functions/auth.php';
+include '../partial/head.php';
+?>
 <body class="crm_body_bg">
     <div class="col-lg-12">
         <div class="white_box mb_30">

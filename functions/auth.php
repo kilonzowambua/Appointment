@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['Login'])) {
+if(isset($_POST['Login'])) {
     $login_email = mysqli_real_escape_string($mysqli, $_POST['login_email']);
     $login_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['login_password'])));
 
@@ -50,4 +50,3 @@ if (isset($_POST['Login'])) {
         $err = "Access denied please check your email or password";
     }
 }
-?>

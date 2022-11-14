@@ -1,4 +1,6 @@
-<?php require_once ('../config/config.php') ?>
+<?php 
+session_start();
+require_once ('../config/config.php') ?>
 <?php require_once ('../config/checklogin.php') ?>
 <?php include('../partial/head.php') ?>
 
@@ -132,7 +134,7 @@
                                     <div class="profile_info_details">
                                         <a href="#">My Profile </a>
                                         <a href="#">Settings</a>
-                                        <a href="#">Log Out </a>
+                                        <a href="lo">Log Out </a>
                                     </div>
                                 </div>
                             </div>
