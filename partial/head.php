@@ -1,4 +1,5 @@
-<head>
+<!DOCTYPE html>
+<html lang="en">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -18,6 +19,9 @@
 
     <link rel="stylesheet" href="../public/css/style1.css" />
     <link rel="stylesheet" href="../public/css/colors/default.css" id="colorSkinCSS">
+      <!-- Toastr -->
+      <link rel="stylesheet" href="../public/js/toastr/toastr.min.css">
+    
     <?php
     /* Alert Sesion Via Alerts */
     if (isset($_SESSION['success'])) {

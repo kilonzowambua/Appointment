@@ -43,7 +43,7 @@
 <script src="../public/vendors/chart_am/chart-custom.js"></script>
 
 <script src="../public/js/custom.js"></script>
-<link rel="stylesheet" href="../public/vendors/toastr/toastr.min.js" />
+<script src="../public/js/toastr/toastr.min.js"></script>
 <!-- Init  Alerts -->
 <?php if (isset($success)) { ?>
     <!-- Pop Success Alert -->
@@ -102,22 +102,3 @@ if (isset($info)) { ?>
     </script>
 <?php }
 ?>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#sel_std").change(function() {
-            var StdID = $(this).val();
-            if (StdID) {
-                $.ajax({
-                    type: 'POST',
-                    url: '../functions/student.php',
-                    data: 'std_id=' + StdID,
-                    success: function(html) {
-                        $('#school').html(html);
-                    }
-                });
-            } else {
-
-            }
-        });
-    });
-</script>

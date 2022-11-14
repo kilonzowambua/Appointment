@@ -1,9 +1,7 @@
 <?php require_once ('../config/config.php') ?>
 <?php require_once ('../config/checklogin.php') ?>
-<!DOCTYPE html>
-<html>
 <?php include('../partial/head.php') ?>
-</head>
+
 
 <body class="crm_body_bg">
 
