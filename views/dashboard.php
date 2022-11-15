@@ -2,9 +2,13 @@
 session_start();
 require_once ('../config/config.php') ?>
 <?php require_once ('../config/checklogin.php') ?>
-<?php include('../partial/head.php') ?>
+<?php include('../partial/head.php'); 
+
+    /* Load This Page With Logged In User Session */
+    $login_id = mysqli_escape_string($mysqli, $_SESSION['login_id']);
 
 
+            ?>
 <body class="crm_body_bg">
 
 <?php include('../partial/navbar.php') ?>
@@ -124,17 +128,37 @@ require_once ('../config/config.php') ?>
                                     <a class="CHATBOX_open nav-link-notify" href="#"> <img src="img/icon/msg.svg" alt=""> </a>
                                 </li>
                             </div>
+                            <?php
+                             $sql1 = mysqli_query($mysqli,"SELECT * FROM users WHERE user_id='$login_id'");
+                             $sql2 = mysqli_query($mysqli,"SELECT * FROM auth WHERE auth_id='$login_id'");
+                             if(mysqli_num_rows($sql1) != 0){
+                                while ($user1 = mysqli_fetch_array($sql1)) {
+                                ?>
                             <div class="profile_info">
                                 <img src="img/client_img.png" alt="#">
                                 <div class="profile_info_iner">
+                                  
+                        
                                     <div class="profile_author_name">
-                                        <p>Neurologist </p>
-                                        <h5>Dr. Robar Smith</h5>
+                                        <p>User</p>
+                                        <h5><?php echo $user1['user_first_name']?>  <?php echo $user1['user_last_name']   ?></h5>
                                     </div>
+                                    <?php }}else if(mysqli_num_rows($sql2) != 0){
+                                         while ($user = mysqli_fetch_array($sql2)) {?>
+                                              <div class="profile_info">
+                                <img src="img/client_img.png" alt="#">
+                                <div class="profile_info_iner">
+                                  
+                        
+                                    <div class="profile_author_name">
+                                        <p>Administritor</p>
+                                        <h5><?php echo $user['auth_first_name']?>  <?php echo $user['auth_last_name']   ?></h5>
+                                    </div>
+                                   <?php }}?>
                                     <div class="profile_info_details">
-                                        <a href="#">My Profile </a>
+                                        <a href="profile">My Profile </a>
                                         <a href="#">Settings</a>
-                                        <a href="lo">Log Out </a>
+                                        <a href="logout">Log Out </a>
                                     </div>
                                 </div>
                             </div>
