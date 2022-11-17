@@ -1,8 +1,9 @@
 <?php
 session_start();
-require_once('../config/config.php') ?>
-<?php require_once('../config/checklogin.php') ?>
-<?php include('../partial/head.php');
+require_once('../config/config.php');
+require_once('../config/checklogin.php');
+include('../partial/head.php');
+require('../functions/settings.php');
 
 /* Load This Page With Logged In User Session */
 $login_id = mysqli_escape_string($mysqli, $_SESSION['login_id']);
@@ -117,31 +118,31 @@ if (mysqli_num_rows($sql1) != 0) {
                             </div>
                             <div class="col-lg-12">
                                 <div class="white_card card_height_100 mb_30">
-                                    <div class="white_card_header">
-                                        <div class="box_header m-0">
-
-                                        </div>
-                                    </div>
+                                    
                                     <div class="white_card_body">
                                         <form method="post">
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label>First Name</label>
-                                                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                                    <input type="hidden" class="form-control" name="user_id" value="<?php echo $user['user_id'] ?>">
+                                                    <input type="text" class="form-control" name="user_first_name" value="<?php echo $user['user_first_name'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Last Name</label>
-                                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                                    <input type="text" class="form-control"  name="user_last_name" value="<?php echo $user['user_last_name'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                                    <input type="email" class="form-control"  name="user_email" value="<?php echo $user['user_email'] ?>">
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-sm-10">
+                                        <button type="submit" name="update_user" class="btn btn-primary">Save</button>
+                                    </div>
+                                    
                                                 </div>
                                             </div>
-                                            <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                    </form>
+                                            </form>
 
                                     </div>
                                     
@@ -261,32 +262,32 @@ if (mysqli_num_rows($sql1) != 0) {
                             </div>
                             <div class="col-lg-12">
                                 <div class="white_card card_height_100 mb_30">
-                                    <div class="white_card_header">
-                                        <div class="box_header m-0">
-
-                                        </div>
-                                    </div>
+                                    
+                                    <div class="white_card_body">
                                     <div class="white_card_body">
                                         <form method="post">
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label>First Name</label>
-                                                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                                    <input type="hidden" class="form-control" name="auth_id" value="<?php echo $user['auth_id'] ?>">
+                                                    <input type="text" class="form-control" name="auth_first_name" value="<?php echo $user['auth_first_name'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Last Name</label>
-                                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                                    <input type="text" class="form-control"  name="auth_last_name" value="<?php echo $user['auth_last_name'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                                    <input type="email" class="form-control"  name="auth_email" value="<?php echo $user['auth_email'] ?>">
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-sm-10">
+                                        <button type="submit" name="update_auth" class="btn btn-primary">Save</button>
+                                    </div>
+                                    
                                                 </div>
                                             </div>
-                                            <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                    </form>
-
+                                            </form>
                                     </div>
                                     
                                 </div>

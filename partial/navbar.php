@@ -7,7 +7,7 @@
         </div>
         <ul id="sidebar_menu">
             <li class="mm-active">
-                <a class="has-arrow" href="#" aria-expanded="false">
+                <a class="has-arrow" href="dashboard" aria-expanded="false">
                 <i class="ti-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
