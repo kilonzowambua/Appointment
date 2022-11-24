@@ -127,10 +127,10 @@ if (mysqli_num_rows($sql) > 0) {
                                                     <label>Email</label>
                                                     <input type="email" class="form-control"  name="auth_email" value="<?php echo $auth['auth_email'] ?>">
                                                 </div>
-                                                <div class="row">
+                                               
                                                 <div class="col-sm-10">
                                         <button type="submit" name="update_auth" class="btn btn-primary">Save</button>
-                                    </div>
+                                 
                                     
                                                 </div>
                                             </div>

@@ -3,6 +3,7 @@ session_start();
 require_once('../config/config.php');
 require_once('../config/checklogin.php');
 include('../partial/head.php');
+require('../config/codeGen.php');
 require('../functions/settings.php');
 
 /* Load This Page With Logged In User Session */
@@ -227,7 +228,7 @@ if (mysqli_num_rows($sql1) != 0) {
                                                                             <td><a href="update_user?id=<?php echo $auth['auth_id']; ?>"> <i class="fas fa-edit"></i> Edit</a></td>
                                                                         </tr>
                                                                 <?php
-                                                                        include('../partial/modals/user.php');
+
                                                                     }
                                                                 } ?>
                                                             </tbody>
@@ -249,7 +250,7 @@ if (mysqli_num_rows($sql1) != 0) {
                                 <div class="modal-content">
                                     <div class="modal-header align-items-center">
                                         <div class="modal-title">
-                                            <h6 class="mb-0">Register New Fiscal Year</h6>
+                                            <h6 class="mb-0">Register New User</h6>
                                         </div>
                                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -258,35 +259,29 @@ if (mysqli_num_rows($sql1) != 0) {
                                     <div class="modal-body">
                                         <form method="post" enctype="multipart/form-data" role="form">
                                             <div class="row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Fiscal Year Start</label>
-                                                    <!-- Hide This -->
-                                                    <input type="text" required name="fiscal_year_start" class="form-control">
+                                                <div class="col-md-4">
+                                                    <label>First Name</label>
+
+                                                    <input type="text" class="form-control" name="auth_first_name">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Fiscal Year End</label>
-                                                    <input type="text" required name="fiscal_year_end" class="form-control">
+                                                <div class="col-md-4">
+                                                    <label>Last Name</label>
+                                                    <input type="text" class="form-control" name="auth_last_name">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Allocated Amount</label>
-                                                    <input type="text" required name="fiscal_year_budget_amount" class="form-control">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Status</label>
-                                                    <select class="form-control basic" name="fiscal_year_status">
-                                                        <option>Active</option>
-                                                        <option>Pending</option>
-                                                    </select>
+                                                <div class="col-md-4">
+                                                    <label>Email</label>
+                                                    <input type="email" class="form-control" name="auth_email">
                                                 </div>
                                             </div>
-                                            <div class="text-right">
-                                                <button type="submit" name="Add_Fiscal_Year" class="btn btn-warning">Add</button>
-                                            </div>
+                                            <div>
                                             <br>
+                                                    <button type="submit" name="add_auth" class="btn btn-primary">Save</button>
+                                                </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
 
 

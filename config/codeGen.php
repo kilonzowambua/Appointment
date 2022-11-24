@@ -47,7 +47,3 @@ $staff_id = 'STF-' . substr(str_shuffle("1234567890"), 1, 4);
 $user_gen_password =  substr(str_shuffle("QWERTYUIOPwertyuioplkjLKJHGFDSAZXCVBNM1234567890qhgfdsazxcvbnm"), 1, 6);
 
 
-/* System Generated File Names Codes */
-$company_compliance_code = 'Makueni_County_Preq_' . substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 4);
-$company_commercial_code = 'Makueni_County_Preq_' . substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 4);
-$company_technical_code = 'Makueni_County_Preq_' . substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 4);

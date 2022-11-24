@@ -1,4 +1,18 @@
 <?php
+#auth add
+if(isset($_POST['add_auth'])){
+    $auth_first_name=mysqli_escape_string($mysqli,$_POST['auth_first_name']);
+    $auth_last_name = mysqli_escape_string($mysqli,$_POST['auth_last_name']);
+    $auth_email =mysqli_escape_string($mysqli,$_POST['auth_email']);
+    $auth_password =mysqli_escape_string($mysqli,sha1(md5($user_gen_password)));
+    $add_sql="INSERT INTO auth(auth_first_name,auth_last_name,auth_email,auth_password)VALUE('{$auth_first_name}','{$auth_last_name}','{$auth_email}','{$auth_password}')";
+    if (mysqli_query($mysqli, $add_sql)) {
+        $success = "User is added";
+    } else {
+        $err = "Failed, please try again"; 
+    }
+    
+}
 #user update
 if(isset($_POST['update_user'])){
  
