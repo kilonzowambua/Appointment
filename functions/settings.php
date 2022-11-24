@@ -13,6 +13,35 @@ if(isset($_POST['add_auth'])){
     }
     
 }
+#auth update
+if(isset($_POST['update_auth'])){
+ 
+    $auth_id= mysqli_escape_string($mysqli,$_POST['auth_id']);
+    $auth_first_name=mysqli_escape_string($mysqli,$_POST['auth_first_name']);
+    $auth_last_name = mysqli_escape_string($mysqli,$_POST['auth_last_name']);
+    $auth_email =mysqli_escape_string($mysqli,$_POST['auth_email']);
+
+    $update_sql="UPDATE auth SET auth_first_name='{$auth_first_name}',auth_last_name='{$auth_last_name}',auth_email='{$auth_email}' WHERE auth_id ='{$auth_id}'";
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Administrator's Info update";
+    } else {
+        $err = "Failed, please try again"; 
+    }
+    
+
+}
+if(isset($_GET['delete'])){
+    $auth_id= mysqli_escape_string($mysqli,$_GET['delete']);
+    $delete_sql="DELETE FROM `auth` WHERE auth_id='{$auth_id}'";
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $_SESSION['success'] = 'You have Removed User';
+        header('Location:users.php');
+        exit;
+        
+    } else {
+        $err = "Failed, please try again"; 
+    }
+}
 #user update
 if(isset($_POST['update_user'])){
  
@@ -31,22 +60,5 @@ if(isset($_POST['update_user'])){
 
 }
 
-#auth update
-if(isset($_POST['update_auth'])){
- 
-    $auth_id= mysqli_escape_string($mysqli,$_POST['auth_id']);
-    $auth_first_name=mysqli_escape_string($mysqli,$_POST['auth_first_name']);
-    $auth_last_name = mysqli_escape_string($mysqli,$_POST['auth_last_name']);
-    $auth_email =mysqli_escape_string($mysqli,$_POST['auth_email']);
-
-    $update_sql="UPDATE auth SET auth_first_name='{$auth_first_name}',auth_last_name='{$auth_last_name}',auth_email='{$auth_email}' WHERE auth_id ='{$auth_id}'";
-    if (mysqli_query($mysqli, $update_sql)) {
-        $success = "Administrator's Info update";
-    } else {
-        $err = "Failed, please try again"; 
-    }
-    
-
-}
 
 ?>

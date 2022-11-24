@@ -224,8 +224,12 @@ if (mysqli_num_rows($sql1) != 0) {
                                                                             <td><?php echo $auth['auth_first_name'] ?></td>
                                                                             <td><?php echo $auth['auth_last_name'] ?></td>
                                                                             <td><?php echo $auth['auth_email'] ?></td>
-
-                                                                            <td><a href="update_user?id=<?php echo $auth['auth_id']; ?>"> <i class="fas fa-edit"></i> Edit</a></td>
+                                                                            delete
+                                                                            <td>
+                                                                        <a href="update_user?id=<?php echo $auth['auth_id']; ?>"> <i class="fas fa-edit"></i> Edit</a>
+                                                                        <a href="update_user?delete=<?php echo $auth['auth_id']; ?>"> <i class="fas fa-trash"></i> Delete</a>
+                                                                        
+                                                                        </td>
                                                                         </tr>
                                                                 <?php
 
