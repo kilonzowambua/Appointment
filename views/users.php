@@ -95,7 +95,7 @@ if (mysqli_num_rows($sql1) != 0) {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
 
@@ -170,7 +170,7 @@ if (mysqli_num_rows($sql1) != 0) {
 
                                                     <div class="profile_author_name">
                                                         <p>User</p>
-                                                        <h5><?php echo $user['user_first_name'] ?> <?php echo $user['user_last_name']   ?></h5>
+                                                        <h5><?php echo $user['auth_first_name'] ?> <?php echo $user['auth_last_name']   ?></h5>
                                                     </div>
                                                     <div class="profile_info_details">
                                                         <a href="profile">My Profile </a>
@@ -214,19 +214,22 @@ if (mysqli_num_rows($sql1) != 0) {
                                                             </thead>
                                                             <tbody>
                                                                 <?php
-                                                                $query=mysqli_query($mysqli,"SELECT* FROM auth");
+                                                                $query = mysqli_query($mysqli, "SELECT* FROM auth");
                                                                 if (mysqli_num_rows($query) > 0) {
                                                                     while ($auth = mysqli_fetch_array($query)) {
                                                                 ?>
-        
-                                                                <tr>
-                                                                    <td><?php echo $auth['auth_first_name']?></td>
-                                                                    <td><?php echo $auth['auth_last_name']?></td>
-                                                                    <td><?php echo $auth['auth_email']?></td>
-                                                        
-                                                                    <td><a data-toggle="modal" href="#update_<?php echo $auth['auth_id']; ?>" class="status_btn"><i class="fas fa-edit"></i>Edit</a></td>
-                                                                </tr>
-<?php }?>
+
+                                                                        <tr>
+                                                                            <td><?php echo $auth['auth_first_name'] ?></td>
+                                                                            <td><?php echo $auth['auth_last_name'] ?></td>
+                                                                            <td><?php echo $auth['auth_email'] ?></td>
+
+                                                                            <td><a href="update_user?id=<?php echo $auth['auth_id']; ?>"> <i class="fas fa-edit"></i> Edit</a></td>
+                                                                        </tr>
+                                                                <?php
+                                                                        include('../partial/modals/user.php');
+                                                                    }
+                                                                } ?>
                                                             </tbody>
 
                                                         </table>
@@ -238,54 +241,54 @@ if (mysqli_num_rows($sql1) != 0) {
                                 </div>
                             </div>
                         </div>
-                        <?php  include('../partial/modals/user.php');
-}?>
 
-        <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog  modal-xl" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header align-items-center">
-                                            <div class="modal-title">
-                                                <h6 class="mb-0">Register New Fiscal Year</h6>
+
+
+                        <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog  modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header align-items-center">
+                                        <div class="modal-title">
+                                            <h6 class="mb-0">Register New Fiscal Year</h6>
+                                        </div>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" enctype="multipart/form-data" role="form">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Fiscal Year Start</label>
+                                                    <!-- Hide This -->
+                                                    <input type="text" required name="fiscal_year_start" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Fiscal Year End</label>
+                                                    <input type="text" required name="fiscal_year_end" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Allocated Amount</label>
+                                                    <input type="text" required name="fiscal_year_budget_amount" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Status</label>
+                                                    <select class="form-control basic" name="fiscal_year_status">
+                                                        <option>Active</option>
+                                                        <option>Pending</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form method="post" enctype="multipart/form-data" role="form">
-                                                <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="">Fiscal Year Start</label>
-                                                        <!-- Hide This -->
-                                                        <input type="text" required name="fiscal_year_start" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="">Fiscal Year End</label>
-                                                        <input type="text" required name="fiscal_year_end" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="">Allocated Amount</label>
-                                                        <input type="text" required name="fiscal_year_budget_amount" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="">Status</label>
-                                                        <select class="form-control basic" name="fiscal_year_status">
-                                                            <option>Active</option>
-                                                            <option>Pending</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="text-right">
-                                                    <button type="submit" name="Add_Fiscal_Year" class="btn btn-warning">Add</button>
-                                                </div>
-                                                <br>
-                                            </form>
-                                        </div>
+                                            <div class="text-right">
+                                                <button type="submit" name="Add_Fiscal_Year" class="btn btn-warning">Add</button>
+                                            </div>
+                                            <br>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>           
-                  
+                            </div>
+                        </div>
+
 
                 <?php }
         } ?>
